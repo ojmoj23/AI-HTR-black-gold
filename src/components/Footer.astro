@@ -1,0 +1,19 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<footer class="border-t border-[#1a1a1a] py-10 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="font-display font-bold text-[#C9A84C]">AI HTR</span>
+      <span class="text-[#2a2a2a] text-xs">·</span>
+      <span class="text-[#3a3a3a] text-xs">{tr.footer.tagline}</span>
+    </div>
+    <span class="text-[#333] text-xs">{tr.footer.copy}</span>
+  </div>
+</footer>

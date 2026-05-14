@@ -1,0 +1,44 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+
+const icons = [
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="m9 12 2 2 4-4"/><path d="M18 2v4h4"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+];
+---
+
+<section id="features" class="py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-4 lg:items-end justify-between mb-16">
+      <div>
+        <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.features.eyebrow}</p>
+        <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] text-[#F0F0F0] leading-tight max-w-xl">
+          {tr.features.heading}
+        </h2>
+      </div>
+      <div class="section-line lg:mb-3 flex-shrink-0"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
+      {[
+        { icon: icons[0], title: tr.features.card1Title, text: tr.features.card1Text },
+        { icon: icons[1], title: tr.features.card2Title, text: tr.features.card2Text },
+        { icon: icons[2], title: tr.features.card3Title, text: tr.features.card3Text },
+        { icon: icons[3], title: tr.features.card4Title, text: tr.features.card4Text },
+      ].map(card => (
+        <div class="bg-[#0A0A0A] p-8 group hover:bg-[#0f0f0f] transition-colors">
+          <div class="text-[#C9A84C] mb-6 group-hover:scale-110 transition-transform origin-left" set:html={card.icon} />
+          <h3 class="text-[#E8E8E8] font-semibold text-base mb-3">{card.title}</h3>
+          <p class="text-[#555] text-sm leading-relaxed">{card.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

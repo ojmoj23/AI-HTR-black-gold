@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #C9A84C;
+  --color-gold-light: #E2C97E;
+  --color-gold-dim: #C9A84C33;
+  --color-bg: #0A0A0A;
+  --color-bg-2: #111111;
+  --color-bg-3: #181818;
+  --color-text: #E8E8E8;
+  --color-muted: #666666;
+  --color-border: #1E1E1E;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider line */
+.section-line {
+  width: 48px;
+  height: 2px;
+  background: #C9A84C;
+}
+
+/* Subtle gold border glow */
+.card-gold {
+  border: 1px solid #1E1E1E;
+  background: #111111;
+  transition: border-color 0.3s ease;
+}
+
+.card-gold:hover {
+  border-color: #C9A84C44;
+}

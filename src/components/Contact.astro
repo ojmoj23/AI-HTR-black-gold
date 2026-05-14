@@ -1,0 +1,38 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<section id="contact" class="py-32 px-6 lg:px-12 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full" style="background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);"></div>
+  </div>
+
+  <div class="max-w-3xl mx-auto text-center relative z-10">
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-6">{tr.contact.eyebrow}</p>
+    <h2 class="font-display font-bold text-[clamp(32px,5vw,60px)] text-[#F0F0F0] leading-tight mb-8">
+      {tr.contact.heading}
+    </h2>
+    <div class="section-line mx-auto mb-8"></div>
+    <p class="text-[#666] text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+      {tr.contact.sub}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a
+        href="mailto:info@ai-htr.com"
+        class="inline-flex items-center gap-3 px-10 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-bold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors"
+      >
+        {tr.contact.cta}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <p class="text-[#3a3a3a] text-sm mt-8">{tr.contact.or} <a href="mailto:info@ai-htr.com" class="text-[#C9A84C] hover:underline">info@ai-htr.com</a></p>
+  </div>
+</section>

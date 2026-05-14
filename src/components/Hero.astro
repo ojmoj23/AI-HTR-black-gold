@@ -1,0 +1,78 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<section class="relative min-h-screen flex flex-col justify-center pt-20 pb-24 px-6 lg:px-12 overflow-hidden">
+  <!-- Background grid -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Radial glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full" style="background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto w-full relative z-10">
+    <!-- Eyebrow -->
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-6">
+      {tr.hero.eyebrow}
+    </p>
+
+    <!-- Heading -->
+    <h1 class="font-display font-bold leading-[1.05] mb-8 max-w-4xl">
+      <span class="block text-[clamp(40px,6vw,72px)] text-[#F0F0F0]">{tr.hero.heading1}</span>
+      <span class="block text-[clamp(40px,6vw,72px)] text-[#F0F0F0]">
+        {tr.hero.heading2}<span class="text-gold-gradient">{tr.hero.heading3}</span>
+      </span>
+    </h1>
+
+    <!-- Gold line -->
+    <div class="section-line mb-8"></div>
+
+    <!-- Sub -->
+    <p class="text-[#777] text-lg lg:text-xl leading-relaxed max-w-2xl mb-12">
+      {tr.hero.sub}
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-wrap gap-4 mb-20">
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors"
+      >
+        {tr.hero.cta}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a
+        href="#features"
+        class="inline-flex items-center gap-3 px-8 py-4 border border-[#2a2a2a] text-[#888] text-sm font-semibold tracking-widest uppercase hover:border-[#C9A84C44] hover:text-[#C9A84C] transition-colors"
+      >
+        {tr.hero.ctaSecondary}
+      </a>
+    </div>
+
+    <!-- Stats row -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
+      {[
+        { num: tr.hero.stat1, label: tr.hero.stat1Label },
+        { num: tr.hero.stat2, label: tr.hero.stat2Label },
+        { num: tr.hero.stat3, label: tr.hero.stat3Label },
+        { num: tr.hero.stat4, label: tr.hero.stat4Label },
+      ].map(s => (
+        <div class="bg-[#0A0A0A] px-6 py-8">
+          <div class="font-display font-bold text-[clamp(32px,4vw,48px)] text-[#C9A84C] leading-none mb-2">{s.num}</div>
+          <div class="text-[#555] text-xs font-medium tracking-wider uppercase">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <div class="w-px h-12 bg-gradient-to-b from-[#C9A84C] to-transparent"></div>
+    <span class="text-[10px] tracking-[0.2em] text-[#555] uppercase">Scroll</span>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<section id="technology" class="py-28 px-6 lg:px-12 bg-[#0D0D0D]">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.tech.eyebrow}</p>
+    <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] text-[#F0F0F0] leading-tight mb-6 max-w-2xl">
+      {tr.tech.heading}
+    </h2>
+    <div class="section-line mb-16"></div>
+
+    <div class="grid lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+      {[
+        { num: '1', title: tr.tech.step1Title, text: tr.tech.step1Text },
+        { num: '2', title: tr.tech.step2Title, text: tr.tech.step2Text },
+        { num: '3', title: tr.tech.step3Title, text: tr.tech.step3Text },
+      ].map(item => (
+        <div class="bg-[#0D0D0D] px-10 py-12 relative group">
+          <div class="absolute top-8 right-8 font-display font-bold text-[72px] text-[#C9A84C] leading-none opacity-10 group-hover:opacity-20 transition-opacity select-none">
+            {item.num}
+          </div>
+          <div class="w-8 h-px bg-[#C9A84C] mb-8"></div>
+          <h3 class="text-[#E8E8E8] font-semibold text-lg mb-4">{item.title}</h3>
+          <p class="text-[#555] text-sm leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Architecture sub-section -->
+    <div class="mt-px">
+      <div class="bg-[#0D0D0D] pt-16 pb-4">
+        <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.arch.eyebrow}</p>
+        <h2 class="font-display font-bold text-[clamp(24px,3vw,40px)] text-[#F0F0F0] leading-tight mb-12 max-w-2xl">
+          {tr.arch.heading}
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
+          {[
+            { title: tr.arch.card1Title, text: tr.arch.card1Text },
+            { title: tr.arch.card2Title, text: tr.arch.card2Text },
+            { title: tr.arch.card3Title, text: tr.arch.card3Text },
+            { title: tr.arch.card4Title, text: tr.arch.card4Text },
+          ].map(card => (
+            <div class="bg-[#0D0D0D] p-8 border-t border-[#C9A84C22]">
+              <div class="w-6 h-px bg-[#C9A84C] mb-5 opacity-60"></div>
+              <h3 class="text-[#E8E8E8] font-semibold text-sm mb-3">{card.title}</h3>
+              <p class="text-[#555] text-sm leading-relaxed">{card.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+const otherLang = lang === 'en' ? 'ru' : 'en';
+const homePath = lang === 'en' ? '/' : '/ru';
+const otherPath = lang === 'en' ? '/ru' : '/';
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 lg:h-20">
+    <!-- Logo -->
+    <a href={homePath} class="flex items-center gap-3 group">
+      <span class="text-[#C9A84C] font-display font-bold text-xl tracking-tight group-hover:text-[#E2C97E] transition-colors">
+        AI HTR
+      </span>
+      <span class="hidden sm:block w-px h-5 bg-[#1E1E1E]"></span>
+      <span class="hidden sm:block text-[#555] text-xs font-medium tracking-widest uppercase">
+        {lang === 'ru' ? 'Распознавание рукописей' : 'Manuscript Recognition'}
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href={`#features`} class="nav-link">{tr.nav.features}</a>
+      <a href={`#technology`} class="nav-link">{tr.nav.technology}</a>
+      <a href={`#markets`} class="nav-link">{tr.nav.markets}</a>
+      <a href={`#compare`} class="nav-link">{tr.nav.compare}</a>
+    </div>
+
+    <!-- Right: Lang switcher + CTA -->
+    <div class="flex items-center gap-4">
+      <a href={otherPath} class="text-[#555] hover:text-[#C9A84C] text-sm font-medium tracking-widest uppercase transition-colors">
+        {otherLang.toUpperCase()}
+      </a>
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase hover:bg-[#E2C97E] transition-colors">
+        {tr.nav.contact}
+      </a>
+      <!-- Mobile burger -->
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-1" aria-label="Menu">
+        <span class="w-6 h-px bg-[#E8E8E8] block transition-all"></span>
+        <span class="w-6 h-px bg-[#E8E8E8] block transition-all"></span>
+        <span class="w-4 h-px bg-[#E8E8E8] block transition-all"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-[#111] border-t border-[#1E1E1E] px-6 py-6 flex flex-col gap-5">
+    <a href="#features" class="nav-link text-base">{tr.nav.features}</a>
+    <a href="#technology" class="nav-link text-base">{tr.nav.technology}</a>
+    <a href="#markets" class="nav-link text-base">{tr.nav.markets}</a>
+    <a href="#compare" class="nav-link text-base">{tr.nav.compare}</a>
+    <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase w-fit">
+      {tr.nav.contact}
+    </a>
+  </div>
+</header>
+
+<style>
+  .nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #C9A84C; }
+
+  #navbar.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1E1E1E;
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar')!;
+  const menuBtn = document.getElementById('menu-btn')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+</script>

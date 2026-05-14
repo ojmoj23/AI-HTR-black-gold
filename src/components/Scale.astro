@@ -1,0 +1,62 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<section class="py-28 px-6 lg:px-12 relative overflow-hidden">
+  <!-- BG accent -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 60%);"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.scale.eyebrow}</p>
+    <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] text-[#F0F0F0] leading-tight mb-6 max-w-xl">
+      {tr.scale.heading}
+    </h2>
+    <div class="section-line mb-16"></div>
+
+    <div class="grid lg:grid-cols-3 gap-px bg-[#1a1a1a]">
+      {[
+        { num: tr.scale.stat1, label: tr.scale.stat1Label, sub: tr.scale.stat1Sub },
+        { num: tr.scale.stat2, label: tr.scale.stat2Label, sub: tr.scale.stat2Sub },
+        { num: tr.scale.stat3, label: tr.scale.stat3Label, sub: tr.scale.stat3Sub },
+      ].map(s => (
+        <div class="bg-[#0A0A0A] px-10 py-14 flex flex-col gap-3">
+          <div class="font-display font-bold text-[clamp(52px,7vw,80px)] text-[#C9A84C] leading-none tracking-tight">
+            {s.num}
+          </div>
+          <div class="text-[#E8E8E8] font-semibold text-base">{s.label}</div>
+          <div class="text-[#555] text-sm leading-relaxed">{s.sub}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Formats -->
+<section class="py-24 px-6 lg:px-12 bg-[#0D0D0D]">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.formats.eyebrow}</p>
+    <h2 class="font-display font-bold text-[clamp(24px,3.5vw,44px)] text-[#F0F0F0] leading-tight mb-12 max-w-2xl">
+      {tr.formats.heading}
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {[
+        { title: tr.formats.card1Title, text: tr.formats.card1Text },
+        { title: tr.formats.card2Title, text: tr.formats.card2Text },
+        { title: tr.formats.card3Title, text: tr.formats.card3Text },
+      ].map(card => (
+        <div class="card-gold p-8">
+          <div class="font-mono text-[#C9A84C] text-xs font-bold tracking-widest mb-5 uppercase">{card.title}</div>
+          <p class="text-[#666] text-sm leading-relaxed">{card.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

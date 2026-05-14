@@ -1,0 +1,75 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+---
+
+<section id="compare" class="py-28 px-6 lg:px-12 bg-[#0D0D0D]">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.compare.eyebrow}</p>
+    <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] text-[#F0F0F0] leading-tight mb-6 max-w-xl">
+      {tr.compare.heading}
+    </h2>
+    <div class="section-line mb-16"></div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left py-4 px-6 text-[#444] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-1/4">
+              {tr.compare.col1}
+            </th>
+            <th class="text-left py-4 px-6 border-b border-[#1a1a1a] bg-[#C9A84C0A] w-[37.5%]">
+              <span class="text-[#C9A84C] text-sm font-bold tracking-wider">AI HTR</span>
+            </th>
+            <th class="text-left py-4 px-6 text-[#444] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-[37.5%]">
+              {tr.compare.col3}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { label: tr.compare.row1, a: tr.compare.row1a, b: tr.compare.row1b },
+            { label: tr.compare.row2, a: tr.compare.row2a, b: tr.compare.row2b },
+            { label: tr.compare.row3, a: tr.compare.row3a, b: tr.compare.row3b },
+          ].map((row, i) => (
+            <tr class="border-b border-[#131313] group">
+              <td class="py-6 px-6 text-[#555] text-xs font-semibold tracking-widest uppercase">
+                {row.label}
+              </td>
+              <td class="py-6 px-6 bg-[#C9A84C0A] group-hover:bg-[#C9A84C08] transition-colors">
+                <div class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
+                    <path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="text-[#C9A84C] text-sm font-medium">{row.a}</span>
+                </div>
+              </td>
+              <td class="py-6 px-6">
+                <div class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-[#3a3a3a] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
+                    <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <span class="text-[#555] text-sm">{row.b}</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Note -->
+    <div class="mt-8 flex items-start gap-4 p-6 border border-[#C9A84C22] bg-[#C9A84C08]">
+      <svg class="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 5v4M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p class="text-[#888] text-sm leading-relaxed">{tr.compare.note}</p>
+    </div>
+  </div>
+</section>
