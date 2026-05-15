@@ -7,7 +7,7 @@ export const t = {
       features: 'Features',
       technology: 'Technology',
       markets: 'Markets',
-      compare: 'vs OCR',
+      compare: 'Compare',
       contact: 'Request Demo',
     },
     hero: {
@@ -141,7 +141,7 @@ export const t = {
       features: 'Возможности',
       technology: 'Технологии',
       markets: 'Рынки',
-      compare: 'vs OCR',
+      compare: 'Сравнение',
       contact: 'Запросить демо',
     },
     hero: {
