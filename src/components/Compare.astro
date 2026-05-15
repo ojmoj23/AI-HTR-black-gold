@@ -15,8 +15,41 @@ const tr = useTranslations(lang);
     </h2>
     <div class="section-line mb-16"></div>
 
-    <!-- Table -->
-    <div class="overflow-x-auto">
+    <!-- Mobile: stacked cards -->
+    <div class="lg:hidden flex flex-col">
+      {[
+        { label: tr.compare.row1, a: tr.compare.row1a, b: tr.compare.row1b },
+        { label: tr.compare.row2, a: tr.compare.row2a, b: tr.compare.row2b },
+        { label: tr.compare.row3, a: tr.compare.row3a, b: tr.compare.row3b },
+      ].map(row => (
+        <div class="border-b border-[#1a1a1a] py-6">
+          <p class="text-[#444] text-xs font-semibold tracking-widest uppercase mb-4">{row.label}</p>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-start gap-3 px-4 py-3 bg-[#C9A84C0A]">
+              <svg class="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
+                <path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <span class="text-[#C9A84C] text-xs font-bold tracking-wider uppercase block mb-1">AI HTR</span>
+                <span class="text-[#C9A84C] text-[15px] font-medium">{row.a}</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 px-4 py-3">
+              <svg class="w-4 h-4 text-[#3a3a3a] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
+                <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <span class="text-[#444] text-xs font-bold tracking-wider uppercase block mb-1">{tr.compare.col3}</span>
+                <span class="text-[#555] text-[15px]">{row.b}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Desktop: table -->
+    <div class="hidden lg:block overflow-x-auto">
       <table class="w-full border-collapse">
         <thead>
           <tr>
