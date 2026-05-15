@@ -15,6 +15,22 @@ const tr = useTranslations(lang);
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full" style="background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);"></div>
   </div>
 
+  <!-- Manuscript image: mobile (full bg, semi-transparent) -->
+  <div class="absolute inset-0 z-0 pointer-events-none lg:hidden overflow-hidden">
+    <img src="/33.png" alt="" class="w-full h-full object-contain object-center opacity-35" />
+    <div class="absolute inset-x-0 top-0 h-32" style="background: linear-gradient(to bottom, #0A0A0A, transparent);"></div>
+    <div class="absolute inset-x-0 bottom-0 h-32" style="background: linear-gradient(to top, #0A0A0A, transparent);"></div>
+    <div class="absolute inset-y-0 left-0 w-20" style="background: linear-gradient(to right, #0A0A0A, transparent);"></div>
+    <div class="absolute inset-y-0 right-0 w-20" style="background: linear-gradient(to left, #0A0A0A, transparent);"></div>
+  </div>
+
+  <!-- Manuscript image: desktop (right side) -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[55%] hidden lg:block pointer-events-none z-0">
+    <img src="/33.png" alt="" class="w-full h-auto" />
+    <div class="absolute inset-x-0 top-0 h-24" style="background: linear-gradient(to bottom, #0A0A0A, transparent);"></div>
+    <div class="absolute inset-x-0 bottom-0 h-24" style="background: linear-gradient(to top, #0A0A0A, transparent);"></div>
+  </div>
+
   <div class="max-w-7xl mx-auto w-full relative z-10">
     <!-- Eyebrow -->
     <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-6">
