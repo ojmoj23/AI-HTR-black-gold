@@ -131,7 +131,7 @@ export const t = {
       or: 'or write directly',
     },
     footer: {
-      copy: '© 2025 AI HTR. All rights reserved.',
+      copy: '© 2026 AI HTR. All rights reserved.',
       tagline: 'Digitizing handwritten heritage with AI.',
     },
   },
@@ -265,7 +265,7 @@ export const t = {
       or: 'или напишите напрямую',
     },
     footer: {
-      copy: '© 2025 AI HTR. Все права защищены.',
+      copy: '© 2026 AI HTR. Все права защищены.',
       tagline: 'Оцифровка рукописного наследия с помощью ИИ.',
     },
   },
