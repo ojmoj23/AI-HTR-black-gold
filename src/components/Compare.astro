@@ -23,7 +23,7 @@ const tr = useTranslations(lang);
         { label: tr.compare.row3, a: tr.compare.row3a, b: tr.compare.row3b },
       ].map(row => (
         <div class="border-b border-[#1a1a1a] py-6">
-          <p class="text-[#444] text-xs font-semibold tracking-widest uppercase mb-4">{row.label}</p>
+          <p class="text-[#999] text-xs font-semibold tracking-widest uppercase mb-4">{row.label}</p>
           <div class="flex flex-col gap-3">
             <div class="flex items-start gap-3 px-4 py-3 bg-[#C9A84C0A]">
               <svg class="w-4 h-4 text-[#C9A84C] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 16 16">
@@ -39,7 +39,7 @@ const tr = useTranslations(lang);
                 <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
               <div>
-                <span class="text-[#444] text-xs font-bold tracking-wider uppercase block mb-1">{tr.compare.col3}</span>
+                <span class="text-[#999] text-xs font-bold tracking-wider uppercase block mb-1">{tr.compare.col3}</span>
                 <span class="text-[#999] text-base">{row.b}</span>
               </div>
             </div>
@@ -53,13 +53,13 @@ const tr = useTranslations(lang);
       <table class="w-full border-collapse">
         <thead>
           <tr>
-            <th class="text-left py-4 px-6 text-[#444] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-1/4">
+            <th class="text-left py-4 px-6 text-[#999] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-1/4">
               {tr.compare.col1}
             </th>
             <th class="text-left py-4 px-6 border-b border-[#1a1a1a] bg-[#C9A84C0A] w-[37.5%]">
               <span class="text-[#C9A84C] text-sm font-bold tracking-wider">AI HTR</span>
             </th>
-            <th class="text-left py-4 px-6 text-[#444] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-[37.5%]">
+            <th class="text-left py-4 px-6 text-[#999] text-xs font-semibold tracking-widest uppercase border-b border-[#1a1a1a] w-[37.5%]">
               {tr.compare.col3}
             </th>
           </tr>
@@ -71,7 +71,7 @@ const tr = useTranslations(lang);
             { label: tr.compare.row3, a: tr.compare.row3a, b: tr.compare.row3b },
           ].map((row, i) => (
             <tr class="border-b border-[#131313] group">
-              <td class="py-6 px-6 text-[#555] text-xs font-semibold tracking-widest uppercase">
+              <td class="py-6 px-6 text-[#999] text-xs font-semibold tracking-widest uppercase">
                 {row.label}
               </td>
               <td class="py-6 px-6 bg-[#C9A84C0A] group-hover:bg-[#C9A84C08] transition-colors">
