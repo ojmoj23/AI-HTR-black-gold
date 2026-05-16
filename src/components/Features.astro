@@ -16,28 +16,28 @@ const icons = [
 
 <section id="features" class="py-28 px-6 lg:px-12">
   <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
-      <!-- Left: text -->
+    <div class="flex flex-col lg:flex-row gap-4 lg:items-end justify-between mb-10">
       <div>
         <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.features.eyebrow}</p>
         <h2 class="font-display font-bold text-[clamp(28px,4vw,48px)] text-[#F0F0F0] leading-tight max-w-xl">
           {tr.features.heading}
         </h2>
-        <div class="section-line mt-6"></div>
       </div>
-      <!-- Right: image -->
-      <div class="flex flex-col gap-4 w-full">
-        <div class="rounded-sm overflow-hidden border border-[#1a1a1a] relative">
-          <img
-            src={lang === 'ru' ? '/rus.png' : '/eng222.png'}
-            alt={lang === 'ru' ? 'AI распознаёт рукопись' : 'AI recognizes manuscript'}
-            class="w-full h-auto block"
-          />
-          <div class="absolute inset-x-0 top-0 h-16" style="background: linear-gradient(to bottom, #0A0A0A, transparent);"></div>
-          <div class="absolute inset-x-0 bottom-0 h-16" style="background: linear-gradient(to top, #0A0A0A, transparent);"></div>
-          <div class="absolute inset-y-0 left-0 w-16" style="background: linear-gradient(to right, #0A0A0A, transparent);"></div>
-        </div>
-      </div>
+      <div class="section-line lg:mb-3 flex-shrink-0"></div>
+    </div>
+
+    <!-- Image -->
+    <div class="mb-10 rounded-sm overflow-hidden border border-[#1a1a1a] relative">
+      <img
+        src={lang === 'ru' ? '/rus.png' : '/eng222.png'}
+        alt={lang === 'ru' ? 'AI распознаёт рукопись' : 'AI recognizes manuscript'}
+        class="w-full h-auto block"
+        style="aspect-ratio: 16/5; object-fit: cover; object-position: center;"
+      />
+      <div class="absolute inset-x-0 top-0 h-16" style="background: linear-gradient(to bottom, #0A0A0A, transparent);"></div>
+      <div class="absolute inset-x-0 bottom-0 h-16" style="background: linear-gradient(to top, #0A0A0A, transparent);"></div>
+      <div class="absolute inset-y-0 left-0 w-24" style="background: linear-gradient(to right, #0A0A0A, transparent);"></div>
+      <div class="absolute inset-y-0 right-0 w-24" style="background: linear-gradient(to left, #0A0A0A, transparent);"></div>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1a1a]">
