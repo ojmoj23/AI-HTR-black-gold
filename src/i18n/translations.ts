@@ -67,7 +67,7 @@ export const t = {
       card2Title: 'Fine-Tuning Models',
       card2Text: 'Direct control over AI model creativity and response variability parameters.',
       card3Title: 'Domain Adaptation',
-      card3Text: 'Focused AI attention for legal, medical, and ecclesiastical documents.',
+      card3Text: 'Focused AI attention for legal, medical, historical, and ecclesiastical documents.',
       card4Title: 'Scenario Processing',
       card4Text: 'Rules for text block processing by keywords, managing primitives and output format.',
     },
