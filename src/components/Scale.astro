@@ -5,6 +5,19 @@ import { useTranslations } from '../i18n/translations';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = useTranslations(lang);
+
+// Parse each stat into numeric target + suffix for count-up
+function parseStat(raw: string) {
+  const num = parseInt(raw.replace(/[^0-9]/g, ''), 10);
+  const suffix = raw.replace(/[0-9]/g, '');
+  return { num: isNaN(num) ? 0 : num, suffix };
+}
+
+const stats = [
+  { raw: tr.scale.stat1, label: tr.scale.stat1Label, sub: tr.scale.stat1Sub },
+  { raw: tr.scale.stat2, label: tr.scale.stat2Label, sub: tr.scale.stat2Sub },
+  { raw: tr.scale.stat3, label: tr.scale.stat3Label, sub: tr.scale.stat3Sub },
+].map(s => ({ ...s, ...parseStat(s.raw) }));
 ---
 
 <section class="py-28 px-6 lg:px-12 relative overflow-hidden">
@@ -21,14 +34,14 @@ const tr = useTranslations(lang);
     <div class="section-line mb-16"></div>
 
     <div class="grid lg:grid-cols-3 gap-px bg-[#1a1a1a]">
-      {[
-        { num: tr.scale.stat1, label: tr.scale.stat1Label, sub: tr.scale.stat1Sub },
-        { num: tr.scale.stat2, label: tr.scale.stat2Label, sub: tr.scale.stat2Sub },
-        { num: tr.scale.stat3, label: tr.scale.stat3Label, sub: tr.scale.stat3Sub },
-      ].map(s => (
+      {stats.map(s => (
         <div class="bg-[#0A0A0A] px-10 py-14 flex flex-col gap-3">
-          <div class="font-display font-bold text-[clamp(52px,7vw,80px)] text-[#C9A84C] leading-none tracking-tight">
-            {s.num}
+          <div
+            class="font-display font-bold text-[clamp(52px,7vw,80px)] text-[#C9A84C] leading-none tracking-tight countup-number"
+            data-target={s.num}
+            data-suffix={s.suffix}
+          >
+            {s.num === 0 ? '0' : '0'}{s.suffix}
           </div>
           <div class="text-[#999] font-semibold text-base">{s.label}</div>
           <div class="text-[#999] text-base leading-relaxed">{s.sub}</div>
@@ -60,3 +73,48 @@ const tr = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<script>
+  function easeOutQuart(t: number): number {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateCountUp(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const duration = 900; // ms
+    const start = performance.now();
+
+    // For target=0, just set and done
+    if (target === 0) {
+      el.textContent = '0' + suffix;
+      return;
+    }
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.round(easeOutQuart(progress) * target);
+      el.textContent = value.toLocaleString('en-US').replace(/,/g, '') + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCountUp(entry.target as HTMLElement);
+          observer.unobserve(entry.target); // only once
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll<HTMLElement>('.countup-number').forEach(el => {
+    observer.observe(el);
+  });
+</script>
