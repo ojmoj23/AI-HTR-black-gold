@@ -89,7 +89,7 @@ const valueIcons = [
 <!-- ═══════════════════════════════════════════════
      SECTION 3: Trusted Worldwide
      ═══════════════════════════════════════════════ -->
-<section class="pt-16 pb-28 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
+<section class="pt-16 pb-12 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 60%);"></div>
   </div>
@@ -106,14 +106,14 @@ const valueIcons = [
       </p>
     </div>
 
-    <!-- Images row -->
-    <div class="grid sm:grid-cols-3 gap-px bg-[#1a1a1a] fade-up">
-      {['111', '222', '333'].map((name) => (
+    <!-- Images row: 2 images centered -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto gap-px bg-[#1a1a1a] fade-up">
+      {['111', '222'].map((name) => (
         <div class="overflow-hidden">
           <img
             src={`/${name}.png`}
             alt=""
-            class="w-full h-full object-cover block"
+            class="w-full h-full object-cover block aspect-[4/3]"
           />
         </div>
       ))}
