@@ -112,16 +112,15 @@ const valueIcons = [
       <p class="text-[#999] text-lg leading-relaxed max-w-2xl mb-16">{tr.home.trustedText}</p>
     </div>
 
-    <!-- Image placeholders row -->
+    <!-- Images row -->
     <div class="grid sm:grid-cols-3 gap-px bg-[#1a1a1a] fade-up">
-      {[0, 1, 2].map((i) => (
-        <div class="bg-[#0A0A0A] aspect-video flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
-          <div class="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#C9A84C33] group-hover:border-[#C9A84C66] transition-colors"></div>
-          <div class="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#C9A84C33] group-hover:border-[#C9A84C66] transition-colors"></div>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.25">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-          </svg>
-          <span class="text-[#2a2a2a] text-xs tracking-widest uppercase">{lang === 'ru' ? 'Место для фото' : 'Image'}</span>
+      {['111', '222', '333'].map((name) => (
+        <div class="overflow-hidden">
+          <img
+            src={`/${name}.png`}
+            alt=""
+            class="w-full h-full object-cover block"
+          />
         </div>
       ))}
     </div>
