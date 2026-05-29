@@ -5,6 +5,7 @@ import { useTranslations } from '../i18n/translations';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = useTranslations(lang);
+const productPath = lang === 'en' ? '/ai-htr' : '/ru/ai-htr';
 
 const valueIcons = [
   // Shield — Reliability
@@ -99,7 +100,9 @@ const valueIcons = [
         {tr.home.trustedHeading}
       </h2>
       <div class="section-line mb-8"></div>
-      <p class="text-[#999] text-lg leading-relaxed max-w-2xl mb-16">{tr.home.trustedText}</p>
+      <p class="text-[#999] text-lg leading-relaxed max-w-2xl mb-16">
+        {tr.home.trustedText1}<a href={productPath} class="text-[#C9A84C] hover:text-[#E2C97E] underline underline-offset-2 transition-colors">{tr.home.trustedDiscover}</a>{tr.home.trustedText2}
+      </p>
     </div>
 
     <!-- Images row -->
