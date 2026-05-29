@@ -24,7 +24,9 @@ export const t = {
       // Trusted section
       trustedEyebrow: 'Trusted Worldwide',
       trustedHeading: 'AIR digitizes cultural heritage',
-      trustedText: 'Libraries and archives worldwide use AIR software to effectively digitize historical documents and handwritten collections. Discover how our technology contributes to the preservation and accessibility of cultural heritage.',
+      trustedText1: 'Libraries and archives worldwide use AIR software to effectively digitize historical documents and handwritten collections. ',
+      trustedDiscover: 'Discover',
+      trustedText2: ' how our technology contributes to the preservation and accessibility of cultural heritage.',
     },
     nav: {
       features: 'Features',
@@ -181,7 +183,9 @@ export const t = {
       // Trusted section
       trustedEyebrow: 'Доверие по всему миру',
       trustedHeading: 'АИР оцифровывает культурное наследие',
-      trustedText: 'Библиотеки и архивы по всему миру используют программное обеспечение АИР для эффективной оцифровки исторических документов и рукописных коллекций. Узнайте, как наши технологии способствуют сохранению и доступности культурного наследия.',
+      trustedText1: 'Библиотеки и архивы по всему миру используют программное обеспечение АИР для эффективной оцифровки исторических документов и рукописных коллекций. ',
+      trustedDiscover: 'Узнайте',
+      trustedText2: ', как наши технологии способствуют сохранению и доступности культурного наследия.',
     },
     nav: {
       features: 'Возможности',
