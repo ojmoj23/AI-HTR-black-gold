@@ -154,7 +154,7 @@ export const t = {
       or: 'or write directly',
     },
     footer: {
-      copy: '© 2026 АИР. All rights reserved.',
+      copy: '© 2026 AIR (Architecture of Information Solutions). All rights reserved.',
       tagline: 'Digitizing handwritten heritage with AI.',
     },
   },
@@ -311,7 +311,7 @@ export const t = {
       or: 'или напишите напрямую',
     },
     footer: {
-      copy: '© 2026 АИР. Все права защищены.',
+      copy: '© 2026 АИР (Архитектура Информационных Решений). Все права защищены.',
       tagline: 'Оцифровка рукописного наследия с помощью ИИ.',
     },
   },
