@@ -2,12 +2,18 @@
 import type { Lang } from '../i18n/translations';
 import { useTranslations } from '../i18n/translations';
 
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
+interface Props { lang: Lang; page?: 'home' | 'product'; }
+const { lang, page = 'home' } = Astro.props;
 const tr = useTranslations(lang);
 const otherLang = lang === 'en' ? 'ru' : 'en';
 const homePath = lang === 'en' ? '/' : '/ru';
 const otherPath = lang === 'en' ? '/ru' : '/';
+const productPath = lang === 'en' ? '/ai-htr' : '/ru/ai-htr';
+const otherProductPath = lang === 'en' ? '/ru/ai-htr' : '/ai-htr';
+const isProduct = page === 'product';
+
+const productsLabel = lang === 'ru' ? 'Наши продукты' : 'Our Products';
+const homeLabel = lang === 'ru' ? 'Главная' : 'Home';
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -25,18 +31,51 @@ const otherPath = lang === 'en' ? '/ru' : '/';
 
     <!-- Desktop Nav -->
     <div class="hidden lg:flex items-center gap-8">
-      <a href={`#features`} class="nav-link">{tr.nav.features}</a>
-      <a href={`#technology`} class="nav-link">{tr.nav.technology}</a>
-      <a href={`#markets`} class="nav-link">{tr.nav.markets}</a>
-      <a href={`#compare`} class="nav-link">{tr.nav.compare}</a>
+      <!-- Home link (always) -->
+      <a href={homePath} class={`nav-link${!isProduct ? ' nav-link-active' : ''}`}>{homeLabel}</a>
+
+      {isProduct ? (
+        <!-- Product page: section anchors -->
+        <>
+          <a href="#features" class="nav-link">{tr.nav.features}</a>
+          <a href="#technology" class="nav-link">{tr.nav.technology}</a>
+          <a href="#markets" class="nav-link">{tr.nav.markets}</a>
+          <a href="#compare" class="nav-link">{tr.nav.compare}</a>
+        </>
+      ) : (
+        <!-- Home page: Our Products dropdown -->
+        <div class="relative" id="products-dropdown-wrap">
+          <button id="products-btn" class="nav-link flex items-center gap-1.5" aria-expanded="false">
+            {productsLabel}
+            <svg id="products-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div
+            id="products-menu"
+            class="absolute top-full left-0 mt-3 min-w-[200px] bg-[#111] border border-[#1E1E1E] py-2 hidden"
+          >
+            <a href={productPath} class="dropdown-item">
+              <span class="text-[#C9A84C] text-xs font-bold tracking-wider uppercase block mb-0.5">AI HTR</span>
+              <span class="text-[#666] text-xs">{lang === 'ru' ? 'Распознавание рукописей' : 'Manuscript Recognition'}</span>
+            </a>
+          </div>
+        </div>
+      )}
     </div>
 
     <!-- Right: Lang switcher + CTA -->
     <div class="flex items-center gap-4">
-      <a href={otherPath} class="text-[#555] hover:text-[#C9A84C] text-sm font-medium tracking-widest uppercase transition-colors">
+      <a
+        href={isProduct ? otherProductPath : otherPath}
+        class="text-[#555] hover:text-[#C9A84C] text-sm font-medium tracking-widest uppercase transition-colors"
+      >
         {otherLang.toUpperCase()}
       </a>
-      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase hover:bg-[#E2C97E] transition-colors">
+      <a
+        href={isProduct ? '#contact' : `${productPath}#contact`}
+        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase hover:bg-[#E2C97E] transition-colors"
+      >
         {tr.nav.contact}
       </a>
       <!-- Mobile burger -->
@@ -50,11 +89,24 @@ const otherPath = lang === 'en' ? '/ru' : '/';
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden bg-[#111] border-t border-[#1E1E1E] px-6 py-6 flex flex-col gap-5">
-    <a href="#features" class="nav-link text-base">{tr.nav.features}</a>
-    <a href="#technology" class="nav-link text-base">{tr.nav.technology}</a>
-    <a href="#markets" class="nav-link text-base">{tr.nav.markets}</a>
-    <a href="#compare" class="nav-link text-base">{tr.nav.compare}</a>
-    <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase w-fit">
+    <a href={homePath} class="nav-link text-base">{homeLabel}</a>
+    {isProduct ? (
+      <>
+        <a href="#features" class="nav-link text-base">{tr.nav.features}</a>
+        <a href="#technology" class="nav-link text-base">{tr.nav.technology}</a>
+        <a href="#markets" class="nav-link text-base">{tr.nav.markets}</a>
+        <a href="#compare" class="nav-link text-base">{tr.nav.compare}</a>
+      </>
+    ) : (
+      <div class="flex flex-col gap-1">
+        <span class="text-[#444] text-xs font-semibold tracking-widest uppercase mb-1">{productsLabel}</span>
+        <a href={productPath} class="nav-link text-base pl-3">AI HTR</a>
+      </div>
+    )}
+    <a
+      href={isProduct ? '#contact' : `${productPath}#contact`}
+      class="inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase w-fit"
+    >
       {tr.nav.contact}
     </a>
   </div>
@@ -69,8 +121,21 @@ const otherPath = lang === 'en' ? '/ru' : '/';
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
   .nav-link:hover { color: #C9A84C; }
+  .nav-link-active { color: #C9A84C; }
+
+  .dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .dropdown-item:hover { background: rgba(201,168,76,0.06); }
 
   #navbar.scrolled {
     background: rgba(10, 10, 10, 0.95);
@@ -95,4 +160,25 @@ const otherPath = lang === 'en' ? '/ru' : '/';
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
   });
+
+  // Dropdown logic (only present on home page)
+  const productsBtn = document.getElementById('products-btn');
+  const productsMenu = document.getElementById('products-menu');
+  const productsChevron = document.getElementById('products-chevron');
+
+  if (productsBtn && productsMenu && productsChevron) {
+    productsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !productsMenu.classList.contains('hidden');
+      productsMenu.classList.toggle('hidden', isOpen);
+      productsChevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+      productsBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.addEventListener('click', () => {
+      productsMenu.classList.add('hidden');
+      productsChevron.style.transform = '';
+      productsBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
 </script>
