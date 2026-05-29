@@ -5,7 +5,7 @@ export const t = {
   en: {
     home: {
       // About section
-      aboutEyebrow: 'Who we are',
+      aboutEyebrow: 'About us',
       aboutHeading: 'We are AIR',
       aboutText1: 'A dedicated team of software developers and digitisation specialists committed to helping institutions around the world unlock the value of their document collections.',
       aboutText2: 'We believe that advanced software should not only solve problems but do so with clarity and purpose. That\'s why our tools are designed to be fast, intuitive, and powerful — helping users process even the most challenging materials with confidence.',
@@ -164,7 +164,7 @@ export const t = {
   ru: {
     home: {
       // About section
-      aboutEyebrow: 'Кто мы',
+      aboutEyebrow: 'О нас',
       aboutHeading: 'Мы — АИР',
       aboutText1: 'Команда разработчиков программного обеспечения и специалистов по оцифровке, помогающая учреждениям по всему миру раскрыть ценность их документальных коллекций.',
       aboutText2: 'Мы убеждены: передовое программное обеспечение должно не просто решать задачи, а делать это чётко и осмысленно. Поэтому наши инструменты — быстрые, интуитивные и мощные — помогают уверенно работать даже с самыми сложными материалами.',
