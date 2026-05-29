@@ -1,0 +1,161 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+
+const valueIcons = [
+  // Shield — Reliability
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  // Lightbulb — Innovation
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6H8.3A7 7 0 0 1 5 9a7 7 0 0 1 7-7z"/></svg>`,
+  // Star — Quality
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  // Zap — Efficiency
+  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+];
+---
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: About / Who we are
+     ═══════════════════════════════════════════════ -->
+<section class="pt-40 pb-28 px-6 lg:px-12 relative overflow-hidden">
+  <!-- Subtle grid bg -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style="background: radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, transparent 70%);"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Left: text -->
+      <div class="fade-up">
+        <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-5">{tr.home.aboutEyebrow}</p>
+        <h1 class="font-display font-bold text-[clamp(48px,7vw,88px)] text-[#F0F0F0] leading-none mb-8">
+          {tr.home.aboutHeading}
+        </h1>
+        <div class="section-line mb-10"></div>
+        <div class="flex flex-col gap-6">
+          <p class="text-[#999] text-lg leading-relaxed">{tr.home.aboutText1}</p>
+          <p class="text-[#999] text-lg leading-relaxed">{tr.home.aboutText2}</p>
+          <p class="text-[#999] text-lg leading-relaxed">{tr.home.aboutText3}</p>
+        </div>
+      </div>
+
+      <!-- Right: image placeholder -->
+      <div class="fade-up fade-up-delay relative">
+        <div class="aspect-[4/3] bg-[#0D0D0D] border border-[#1a1a1a] flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+          <!-- Decorative corner lines -->
+          <div class="absolute top-4 left-4 w-8 h-8 border-t border-l border-[#C9A84C44]"></div>
+          <div class="absolute top-4 right-4 w-8 h-8 border-t border-r border-[#C9A84C44]"></div>
+          <div class="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-[#C9A84C44]"></div>
+          <div class="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-[#C9A84C44]"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <p class="text-[#333] text-xs tracking-widest uppercase">{lang === 'ru' ? 'Место для фото' : 'Image placeholder'}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2: Values
+     ═══════════════════════════════════════════════ -->
+<section class="py-28 px-6 lg:px-12 bg-[#0D0D0D]">
+  <div class="max-w-7xl mx-auto">
+    <div class="fade-up text-center mb-16">
+      <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.home.valuesEyebrow}</p>
+      <h2 class="font-display font-bold text-[clamp(26px,3.5vw,44px)] text-[#F0F0F0] leading-tight max-w-2xl mx-auto">
+        {tr.home.valuesHeading}
+      </h2>
+      <div class="section-line mx-auto mt-8"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-px bg-[#1a1a1a]">
+      {[
+        { icon: valueIcons[0], title: tr.home.value1Title, text: tr.home.value1Text },
+        { icon: valueIcons[1], title: tr.home.value2Title, text: tr.home.value2Text },
+        { icon: valueIcons[2], title: tr.home.value3Title, text: tr.home.value3Text },
+        { icon: valueIcons[3], title: tr.home.value4Title, text: tr.home.value4Text },
+      ].map((v, i) => (
+        <div class={`bg-[#0D0D0D] p-10 fade-up`} style={`transition-delay: ${i * 80}ms`}>
+          <div class="text-[#C9A84C] mb-6" set:html={v.icon} />
+          <h3 class="text-[#E8E8E8] font-semibold text-lg mb-4">{v.title}</h3>
+          <p class="text-[#999] text-base leading-relaxed">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: Trusted Worldwide
+     ═══════════════════════════════════════════════ -->
+<section class="py-28 px-6 lg:px-12 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 60%);"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="fade-up">
+      <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.home.trustedEyebrow}</p>
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,52px)] text-[#F0F0F0] leading-tight mb-6 max-w-2xl">
+        {tr.home.trustedHeading}
+      </h2>
+      <div class="section-line mb-8"></div>
+      <p class="text-[#999] text-lg leading-relaxed max-w-2xl mb-16">{tr.home.trustedText}</p>
+    </div>
+
+    <!-- Image placeholders row -->
+    <div class="grid sm:grid-cols-3 gap-px bg-[#1a1a1a] fade-up">
+      {[0, 1, 2].map((i) => (
+        <div class="bg-[#0A0A0A] aspect-video flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
+          <div class="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#C9A84C33] group-hover:border-[#C9A84C66] transition-colors"></div>
+          <div class="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#C9A84C33] group-hover:border-[#C9A84C66] transition-colors"></div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.25">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="text-[#2a2a2a] text-xs tracking-widest uppercase">{lang === 'ru' ? 'Место для фото' : 'Image'}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-up animation on scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-up-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<style>
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up-delay {
+    transition-delay: 150ms;
+  }
+</style>

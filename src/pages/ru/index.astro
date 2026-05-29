@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import HomeContent from '../../components/HomeContent.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'ru' as const;
@@ -8,28 +9,12 @@ const lang = 'ru' as const;
 
 <Layout
   lang={lang}
-  title="AI HTR — ИИ-решения для оцифровки документов"
-  description="AI HTR — интеллектуальные системы для оцифровки рукописей и исторических документов."
+  title="АИР — Умное ПО для оцифровки документов"
+  description="АИР — команда разработчиков и специалистов по оцифровке, помогающая учреждениям по всему миру раскрыть ценность их документальных коллекций."
 >
   <Navbar lang={lang} page="home" />
-  <main class="min-h-screen flex items-center justify-center px-6">
-    <div class="text-center max-w-2xl mx-auto">
-      <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-6">AI HTR</p>
-      <h1 class="font-display font-bold text-[clamp(36px,5vw,64px)] text-[#F0F0F0] leading-tight mb-6">
-        Главная страница в разработке
-      </h1>
-      <div class="w-16 h-px bg-[#C9A84C] mx-auto mb-8"></div>
-      <p class="text-[#999] text-lg leading-relaxed mb-12">
-        Контент для этой страницы готовится.
-      </p>
-      <a
-        href="/ru/ai-htr"
-        class="inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-bold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors"
-      >
-        Смотреть продукт AI HTR
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+  <main>
+    <HomeContent lang={lang} />
   </main>
   <Footer lang={lang} />
 </Layout>
