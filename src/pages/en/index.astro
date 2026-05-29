@@ -1,14 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
-import Hero from '../../components/Hero.astro';
-import Problem from '../../components/Problem.astro';
-import Features from '../../components/Features.astro';
-import Technology from '../../components/Technology.astro';
-import Scale from '../../components/Scale.astro';
-import Markets from '../../components/Markets.astro';
-import Compare from '../../components/Compare.astro';
-import Contact from '../../components/Contact.astro';
+import HomeContent from '../../components/HomeContent.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'en' as const;
@@ -16,19 +9,12 @@ const lang = 'en' as const;
 
 <Layout
   lang={lang}
-  title="AI HTR — Handwritten Text Recognition with up to 99% Accuracy"
-  description="Next-generation AI system for digitizing historical documents, handwritten manuscripts, and archival records. Supports 40+ languages. Ready from day one."
+  title="AIR — Smart Software for Document Digitisation"
+  description="AIR is a team of software developers and digitisation specialists helping institutions worldwide unlock the value of their document collections."
 >
-  <Navbar lang={lang} />
+  <Navbar lang={lang} page="home" />
   <main>
-    <Hero lang={lang} />
-    <Problem lang={lang} />
-    <Features lang={lang} />
-    <Technology lang={lang} />
-    <Scale lang={lang} />
-    <Markets lang={lang} />
-    <Compare lang={lang} />
-    <Contact lang={lang} />
+    <HomeContent lang={lang} />
   </main>
   <Footer lang={lang} />
 </Layout>

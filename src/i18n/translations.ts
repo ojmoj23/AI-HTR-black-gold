@@ -3,6 +3,29 @@ export type Lang = keyof typeof languages;
 
 export const t = {
   en: {
+    home: {
+      // About section
+      aboutEyebrow: 'Who we are',
+      aboutHeading: 'We are AIR',
+      aboutText1: 'A dedicated team of software developers and digitisation specialists committed to helping institutions around the world unlock the value of their document collections.',
+      aboutText2: 'We believe that advanced software should not only solve problems but do so with clarity and purpose. That\'s why our tools are designed to be fast, intuitive, and powerful — helping users process even the most challenging materials with confidence.',
+      aboutText3: 'We are also committed to sustainable practices and responsible entrepreneurship, supporting our clients with long-term solutions that minimize waste, improve digital access, and ensure enduring value.',
+      // Values section
+      valuesEyebrow: 'What we value',
+      valuesHeading: 'Our work is grounded in four core values',
+      value1Title: 'Reliability',
+      value1Text: 'We build dependable software and long-term client relationships by consistently delivering stable, trusted solutions for complex digitisation needs.',
+      value2Title: 'Innovation',
+      value2Text: 'We embrace new technologies and creative thinking to stay ahead in OCR, HTR, and digital processing — constantly evolving to meet changing demands.',
+      value3Title: 'Quality',
+      value3Text: 'From code to customer support, we uphold high standards in everything we do, ensuring precise results and lasting impact.',
+      value4Title: 'Efficiency',
+      value4Text: 'We design tools that simplify workflows, save time, and handle large-scale projects with speed and ease — empowering teams to do more with less.',
+      // Trusted section
+      trustedEyebrow: 'Trusted Worldwide',
+      trustedHeading: 'AIR digitizes cultural heritage',
+      trustedText: 'Libraries and archives worldwide use AIR software to effectively digitize historical documents and handwritten collections. Discover how our technology contributes to the preservation and accessibility of cultural heritage.',
+    },
     nav: {
       features: 'Features',
       technology: 'Technology',
@@ -131,12 +154,35 @@ export const t = {
       or: 'or write directly',
     },
     footer: {
-      copy: '© 2026 AI HTR. All rights reserved.',
+      copy: '© 2026 AIR (Architecture of Information Solutions). All rights reserved.',
       tagline: 'Digitizing handwritten heritage with AI.',
     },
   },
 
   ru: {
+    home: {
+      // About section
+      aboutEyebrow: 'Кто мы',
+      aboutHeading: 'Мы — АИР',
+      aboutText1: 'Команда разработчиков программного обеспечения и специалистов по оцифровке, помогающая учреждениям по всему миру раскрыть ценность их документальных коллекций.',
+      aboutText2: 'Мы убеждены: передовое программное обеспечение должно не просто решать задачи, а делать это чётко и осмысленно. Поэтому наши инструменты — быстрые, интуитивные и мощные — помогают уверенно работать даже с самыми сложными материалами.',
+      aboutText3: 'Мы также привержены устойчивым практикам и ответственному предпринимательству, предлагая клиентам долгосрочные решения, которые сокращают потери, расширяют цифровой доступ и обеспечивают долговременную ценность.',
+      // Values section
+      valuesEyebrow: 'Наши ценности',
+      valuesHeading: 'Четыре принципа, на которых строится наша работа',
+      value1Title: 'Надёжность',
+      value1Text: 'Мы создаём стабильное программное обеспечение и выстраиваем долгосрочные отношения с клиентами, неизменно предоставляя проверенные решения для сложных задач оцифровки.',
+      value2Title: 'Инновации',
+      value2Text: 'Мы используем новые технологии и творческий подход, чтобы оставаться лидерами в области OCR, HTR и цифровой обработки — постоянно развиваясь в ответ на меняющиеся запросы.',
+      value3Title: 'Качество',
+      value3Text: 'От кода до поддержки клиентов — мы придерживаемся высоких стандартов на каждом этапе, обеспечивая точные результаты и долгосрочный эффект.',
+      value4Title: 'Эффективность',
+      value4Text: 'Мы разрабатываем инструменты, которые упрощают рабочие процессы, экономят время и справляются с масштабными проектами быстро и легко — помогая командам делать больше с меньшими затратами.',
+      // Trusted section
+      trustedEyebrow: 'Доверие по всему миру',
+      trustedHeading: 'АИР оцифровывает культурное наследие',
+      trustedText: 'Библиотеки и архивы по всему миру используют программное обеспечение АИР для эффективной оцифровки исторических документов и рукописных коллекций. Узнайте, как наши технологии способствуют сохранению и доступности культурного наследия.',
+    },
     nav: {
       features: 'Возможности',
       technology: 'Технологии',
@@ -265,7 +311,7 @@ export const t = {
       or: 'или напишите напрямую',
     },
     footer: {
-      copy: '© 2026 AI HTR. Все права защищены.',
+      copy: '© 2026 АИР (Архитектура Информационных Решений). Все права защищены.',
       tagline: 'Оцифровка рукописного наследия с помощью ИИ.',
     },
   },

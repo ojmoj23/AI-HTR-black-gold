@@ -1,14 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
-import Hero from '../../components/Hero.astro';
-import Problem from '../../components/Problem.astro';
-import Features from '../../components/Features.astro';
-import Technology from '../../components/Technology.astro';
-import Scale from '../../components/Scale.astro';
-import Markets from '../../components/Markets.astro';
-import Compare from '../../components/Compare.astro';
-import Contact from '../../components/Contact.astro';
+import HomeContent from '../../components/HomeContent.astro';
 import Footer from '../../components/Footer.astro';
 
 const lang = 'ru' as const;
@@ -16,19 +9,12 @@ const lang = 'ru' as const;
 
 <Layout
   lang={lang}
-  title="AI HTR — Распознавание рукописного текста с точностью до 99%"
-  description="Интеллектуальная система оцифровки исторических документов и рукописей. Поддержка 40+ языков. Готова к работе с первого дня."
+  title="АИР — Умное ПО для оцифровки документов"
+  description="АИР — команда разработчиков и специалистов по оцифровке, помогающая учреждениям по всему миру раскрыть ценность их документальных коллекций."
 >
-  <Navbar lang={lang} />
+  <Navbar lang={lang} page="home" />
   <main>
-    <Hero lang={lang} />
-    <Problem lang={lang} />
-    <Features lang={lang} />
-    <Technology lang={lang} />
-    <Scale lang={lang} />
-    <Markets lang={lang} />
-    <Compare lang={lang} />
-    <Contact lang={lang} />
+    <HomeContent lang={lang} />
   </main>
   <Footer lang={lang} />
 </Layout>
