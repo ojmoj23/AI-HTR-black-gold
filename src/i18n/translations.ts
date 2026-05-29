@@ -6,7 +6,8 @@ export const t = {
     home: {
       // About section
       aboutEyebrow: 'About us',
-      aboutHeading: 'We are AIR',
+      aboutHeading: 'We are AIS',
+      aboutSubheading: 'Architecture of Information Solutions',
       aboutText1: 'A dedicated team of software developers and digitisation specialists committed to helping institutions around the world unlock the value of their document collections.',
       aboutText2: 'We believe that advanced software should not only solve problems but do so with clarity and purpose. That\'s why our tools are designed to be fast, intuitive, and powerful — helping users process even the most challenging materials with confidence.',
       aboutText3: 'We are also committed to sustainable practices and responsible entrepreneurship, supporting our clients with long-term solutions that minimize waste, improve digital access, and ensure enduring value.',
@@ -23,8 +24,8 @@ export const t = {
       value4Text: 'We design tools that simplify workflows, save time, and handle large-scale projects with speed and ease — empowering teams to do more with less.',
       // Trusted section
       trustedEyebrow: 'Trusted Worldwide',
-      trustedHeading: 'AIR digitizes cultural heritage',
-      trustedText1: 'Libraries and archives worldwide use AIR software to effectively digitize historical documents and handwritten collections. ',
+      trustedHeading: 'AIS digitizes cultural heritage',
+      trustedText1: 'Libraries and archives worldwide use AIS software to effectively digitize historical documents and handwritten collections. ',
       trustedDiscover: 'Discover',
       trustedText2: ' how our technology contributes to the preservation and accessibility of cultural heritage.',
     },
@@ -156,7 +157,7 @@ export const t = {
       or: 'or write directly',
     },
     footer: {
-      copy: '© 2026 AIR (Architecture of Information Solutions). All rights reserved.',
+      copy: '© 2026 AIS (Architecture of Information Solutions). All rights reserved.',
       tagline: 'Digitizing handwritten heritage with AI.',
     },
   },
@@ -166,6 +167,7 @@ export const t = {
       // About section
       aboutEyebrow: 'О нас',
       aboutHeading: 'Мы — АИР',
+      aboutSubheading: 'Архитектура Информационных Решений',
       aboutText1: 'Команда разработчиков программного обеспечения и специалистов по оцифровке, помогающая учреждениям по всему миру раскрыть ценность их документальных коллекций.',
       aboutText2: 'Мы убеждены: передовое программное обеспечение должно не просто решать задачи, а делать это чётко и осмысленно. Поэтому наши инструменты — быстрые, интуитивные и мощные — помогают уверенно работать даже с самыми сложными материалами.',
       aboutText3: 'Мы также привержены устойчивым практикам и ответственному предпринимательству, предлагая клиентам долгосрочные решения, которые сокращают потери, расширяют цифровой доступ и обеспечивают долговременную ценность.',
