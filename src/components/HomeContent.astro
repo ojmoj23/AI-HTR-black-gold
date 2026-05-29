@@ -106,14 +106,14 @@ const valueIcons = [
       </p>
     </div>
 
-    <!-- Images row -->
-    <div class="grid sm:grid-cols-3 gap-px bg-[#1a1a1a] fade-up">
-      {['111', '222', '333'].map((name) => (
+    <!-- Images row: 2 images centered -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto gap-px bg-[#1a1a1a] fade-up">
+      {['111', '222'].map((name) => (
         <div class="overflow-hidden">
           <img
             src={`/${name}.png`}
             alt=""
-            class="w-full h-full object-cover block"
+            class="w-full h-full object-cover block aspect-[4/3]"
           />
         </div>
       ))}
