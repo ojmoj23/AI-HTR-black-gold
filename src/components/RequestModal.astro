@@ -1,0 +1,204 @@
+---
+import type { Lang } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = useTranslations(lang);
+
+// ⚠️ ВСТАВЬ СЮДА свой Access Key с web3forms.com (регистрация на info@air-it.ru).
+// Пока стоит заглушка — форма не будет доставлять письма, пока не заменишь ключ.
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+---
+
+<div
+  id="request-modal"
+  class="fixed inset-0 z-[100] hidden items-center justify-center px-4"
+  aria-hidden="true"
+>
+  <!-- Backdrop -->
+  <div id="request-modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+  <!-- Dialog -->
+  <div
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="request-modal-title"
+    class="relative z-10 w-full max-w-md bg-[#0D0D0D] border border-[#1E1E1E] p-8 sm:p-10 max-h-[90vh] overflow-y-auto"
+  >
+    <!-- Close button -->
+    <button
+      type="button"
+      id="request-modal-close"
+      aria-label={tr.modal.close}
+      class="absolute top-4 right-4 text-[#777] hover:text-[#C9A84C] transition-colors"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- Form view -->
+    <div id="request-form-view">
+      <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-4">{tr.contact.eyebrow}</p>
+      <h3 id="request-modal-title" class="font-display font-bold text-[28px] text-[#F0F0F0] leading-tight mb-3">
+        {tr.modal.title}
+      </h3>
+      <p class="text-[#999] text-sm leading-relaxed mb-7">{tr.modal.subtitle}</p>
+
+      <form id="request-form" novalidate>
+        <!-- Web3Forms hidden fields -->
+        <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+        <input type="hidden" name="subject" value={tr.modal.emailSubject} />
+        <input type="hidden" name="from_name" value={tr.modal.fromName} />
+        <input type="hidden" name="page_url" id="request-page-url" value="" />
+        <!-- Honeypot (spam trap) -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" />
+
+        <div class="mb-4">
+          <label for="request-name" class="block text-[#999] text-xs font-medium tracking-wider uppercase mb-2">{tr.modal.nameLabel}</label>
+          <input
+            type="text"
+            id="request-name"
+            name="name"
+            placeholder={tr.modal.namePlaceholder}
+            autocomplete="name"
+            class="w-full bg-[#0A0A0A] border border-[#1E1E1E] text-[#E8E8E8] text-sm px-4 py-3 outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#555]"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label for="request-email" class="block text-[#999] text-xs font-medium tracking-wider uppercase mb-2">{tr.modal.emailLabel} <span class="text-[#C9A84C]">*</span></label>
+          <input
+            type="email"
+            id="request-email"
+            name="email"
+            required
+            placeholder={tr.modal.emailPlaceholder}
+            autocomplete="email"
+            class="w-full bg-[#0A0A0A] border border-[#1E1E1E] text-[#E8E8E8] text-sm px-4 py-3 outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#555]"
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="request-submit"
+          class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-bold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          <span id="request-submit-label">{tr.modal.submit}</span>
+        </button>
+
+        <p id="request-error" class="hidden text-[#c96a4c] text-sm mt-4">{tr.modal.errorText}</p>
+      </form>
+    </div>
+
+    <!-- Success view -->
+    <div id="request-success-view" class="hidden text-center py-6">
+      <div class="w-14 h-14 mx-auto mb-6 rounded-full border border-[#C9A84C] flex items-center justify-center">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-[26px] text-[#F0F0F0] mb-3">{tr.modal.successTitle}</h3>
+      <p class="text-[#999] text-sm leading-relaxed mb-8">{tr.modal.successText}</p>
+      <button
+        type="button"
+        id="request-success-close"
+        class="inline-flex items-center justify-center px-8 py-3 border border-[#2a2a2a] text-[#888] text-sm font-semibold tracking-widest uppercase hover:border-[#C9A84C44] hover:text-[#C9A84C] transition-colors"
+      >
+        {tr.modal.close}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ sendingLabel: tr.modal.sending, submitLabel: tr.modal.submit }}>
+  (function () {
+    const modal = document.getElementById('request-modal');
+    if (!modal) return;
+
+    const backdrop = document.getElementById('request-modal-backdrop');
+    const closeBtn = document.getElementById('request-modal-close');
+    const successCloseBtn = document.getElementById('request-success-close');
+    const form = document.getElementById('request-form');
+    const formView = document.getElementById('request-form-view');
+    const successView = document.getElementById('request-success-view');
+    const submitBtn = document.getElementById('request-submit');
+    const submitLabelEl = document.getElementById('request-submit-label');
+    const errorEl = document.getElementById('request-error');
+    const emailInput = document.getElementById('request-email');
+    const pageUrlInput = document.getElementById('request-page-url');
+
+    let lastFocused = null;
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      // Reset to form view each time it opens
+      formView.classList.remove('hidden');
+      successView.classList.add('hidden');
+      errorEl.classList.add('hidden');
+      if (pageUrlInput) pageUrlInput.value = window.location.href;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => emailInput && emailInput.focus(), 30);
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    // Open triggers — any element with .js-open-request-modal
+    document.querySelectorAll('.js-open-request-modal').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    backdrop && backdrop.addEventListener('click', closeModal);
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    successCloseBtn && successCloseBtn.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    form && form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.classList.add('hidden');
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitLabelEl.textContent = sendingLabel;
+
+      try {
+        const formData = new FormData(form);
+        const payload = JSON.stringify(Object.fromEntries(formData));
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: payload,
+        });
+        const data = await res.json();
+        if (data.success) {
+          form.reset();
+          formView.classList.add('hidden');
+          successView.classList.remove('hidden');
+        } else {
+          errorEl.classList.remove('hidden');
+        }
+      } catch (err) {
+        errorEl.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitLabelEl.textContent = submitLabel;
+      }
+    });
+  })();
+</script>

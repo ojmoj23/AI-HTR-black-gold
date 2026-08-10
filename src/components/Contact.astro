@@ -5,6 +5,8 @@ import { useTranslations } from '../i18n/translations';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = useTranslations(lang);
+
+const mailHref = `mailto:info@air-it.ru?subject=${encodeURIComponent(tr.contact.mailSubject)}&body=${encodeURIComponent(tr.contact.mailBody)}`;
 ---
 
 <section id="contact" class="py-32 px-6 lg:px-12 relative overflow-hidden">
@@ -24,15 +26,15 @@ const tr = useTranslations(lang);
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a
-        href="mailto:info@air-it.ru"
-        class="inline-flex items-center gap-3 px-10 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-bold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors"
+      <button
+        type="button"
+        class="js-open-request-modal inline-flex items-center gap-3 px-10 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-bold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors cursor-pointer"
       >
         {tr.contact.cta}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      </button>
     </div>
 
-    <p class="text-[#3a3a3a] text-sm mt-8">{tr.contact.or} <a href="mailto:info@air-it.ru" class="text-[#C9A84C] hover:underline">info@air-it.ru</a></p>
+    <p class="text-[#3a3a3a] text-sm mt-8">{tr.contact.or} <a href={mailHref} class="text-[#C9A84C] hover:underline">info@air-it.ru</a></p>
   </div>
 </section>

@@ -76,7 +76,7 @@ const homeLabel = lang === 'ru' ? 'Главная' : 'Home';
       </a>
       <a
         href={isProduct ? '#contact' : `${productPath}#contact`}
-        class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase hover:bg-[#E2C97E] transition-colors"
+        class:list={["hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase hover:bg-[#E2C97E] transition-colors", { 'js-open-request-modal': isProduct }]}
       >
         {tr.nav.contact}
       </a>
@@ -107,7 +107,7 @@ const homeLabel = lang === 'ru' ? 'Главная' : 'Home';
     )}
     <a
       href={isProduct ? '#contact' : `${productPath}#contact`}
-      class="inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase w-fit"
+      class:list={["inline-flex items-center gap-2 px-5 py-3 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-wider uppercase w-fit", { 'js-open-request-modal': isProduct }]}
     >
       {tr.nav.contact}
     </a>

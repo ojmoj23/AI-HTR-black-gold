@@ -55,13 +55,13 @@ const tr = useTranslations(lang);
 
     <!-- CTA buttons -->
     <div class="flex flex-wrap gap-4 mb-20">
-      <a
-        href="#contact"
-        class="inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors"
+      <button
+        type="button"
+        class="js-open-request-modal inline-flex items-center gap-3 px-8 py-4 bg-[#C9A84C] text-[#0A0A0A] text-sm font-semibold tracking-widest uppercase hover:bg-[#E2C97E] transition-colors cursor-pointer"
       >
         {tr.hero.cta}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      </button>
       <a
         href="#features"
         class="inline-flex items-center gap-3 px-8 py-4 border border-[#2a2a2a] text-[#888] text-sm font-semibold tracking-widest uppercase hover:border-[#C9A84C44] hover:text-[#C9A84C] transition-colors"
