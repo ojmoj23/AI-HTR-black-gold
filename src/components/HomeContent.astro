@@ -30,15 +30,15 @@ const valueIcons = [
   </div>
 
   <div class="max-w-7xl mx-auto relative z-10">
-    <div class="grid lg:grid-cols-[42%_58%] gap-16 lg:gap-24 items-stretch">
+    <div class="grid lg:grid-cols-[42%_58%] gap-16 lg:gap-24 items-center">
 
       <!-- Left: text -->
       <div class="fade-up">
         <p class="text-[#C9A84C] text-xs font-semibold tracking-[0.22em] uppercase mb-5">{tr.home.aboutEyebrow}</p>
-        <h1 class="font-display font-bold text-[clamp(48px,7vw,88px)] text-[#F0F0F0] leading-none mb-3">
+        <h1 class="font-display font-bold text-[clamp(40px,5.5vw,64px)] text-[#F0F0F0] leading-[1.05] mb-3">
           {tr.home.aboutHeading}
         </h1>
-        <p class="text-[#F0F0F0] text-xl font-medium tracking-[0.18em] uppercase mb-8">{tr.home.aboutSubheading}</p>
+        {tr.home.aboutSubheading && <p class="text-[#F0F0F0] text-xl font-medium tracking-[0.18em] uppercase mb-8">{tr.home.aboutSubheading}</p>}
         <div class="section-line mb-10"></div>
         <div class="flex flex-col gap-6">
           <p class="text-[#999] text-lg leading-relaxed">{tr.home.aboutText1}</p>
@@ -47,9 +47,9 @@ const valueIcons = [
         </div>
       </div>
 
-      <!-- Right: image -->
-      <div class="fade-up fade-up-delay relative">
-        <img src="/444.jpg" alt="" class="w-full object-cover block aspect-[4/3] lg:absolute lg:inset-0 lg:h-full lg:aspect-auto" />
+      <!-- Right: image (fixed aspect, decoupled from text height) -->
+      <div class="fade-up fade-up-delay">
+        <img src="/444.jpg" alt="" class="w-full object-cover block aspect-[4/3]" />
       </div>
 
     </div>
