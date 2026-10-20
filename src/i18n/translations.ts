@@ -6,7 +6,7 @@ export const t = {
     home: {
       // About section
       aboutEyebrow: 'About us',
-      aboutHeading: 'Architecture of Information Solutions, LLC',
+      aboutHeading: 'Architecture of Information Solutions',
       aboutSubheading: '',
       aboutText1: 'A dedicated team of software developers and digitisation specialists committed to helping institutions around the world unlock the value of their document collections.',
       aboutText2: 'We believe that advanced software should not only solve problems but do so with clarity and purpose. That\'s why our tools are designed to be fast, intuitive, and powerful — helping users process even the most challenging materials with confidence.',
@@ -23,7 +23,6 @@ export const t = {
       value4Title: 'Efficiency',
       value4Text: 'We design tools that simplify workflows, save time, and handle large-scale projects with speed and ease — empowering teams to do more with less.',
       // Trusted section
-      trustedEyebrow: 'Trusted Worldwide',
       trustedHeading: 'AIS digitizes cultural heritage',
       trustedText1: 'Libraries and archives worldwide use AIS software to effectively digitize historical documents and handwritten collections. ',
       trustedDiscover: 'Discover',
@@ -201,7 +200,6 @@ export const t = {
       value4Title: 'Эффективность',
       value4Text: 'Мы разрабатываем инструменты, которые упрощают рабочие процессы, экономят время и справляются с масштабными проектами быстро и легко — помогая командам делать больше с меньшими затратами.',
       // Trusted section
-      trustedEyebrow: 'Доверие по всему миру',
       trustedHeading: 'АИР оцифровывает культурное наследие',
       trustedText1: 'Библиотеки и архивы по всему миру используют программное обеспечение АИР для эффективной оцифровки исторических документов и рукописных коллекций. ',
       trustedDiscover: 'Узнайте',
